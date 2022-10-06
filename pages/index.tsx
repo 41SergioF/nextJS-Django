@@ -4,7 +4,7 @@ import Header from '../src/components/Header/Header'
 const Home: NextPage = () => {
   return (
     <>
-    <Header />
+      <div>Conteudo</div>
     </>
   )
 }
