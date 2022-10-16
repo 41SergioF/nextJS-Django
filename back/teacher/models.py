@@ -1,3 +1,4 @@
+from email.policy import default
 from pydoc import describe
 from unicodedata import decimal
 from django.db import models
@@ -17,7 +18,7 @@ class Teacher(models.Model):
 
 class Aula(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
-    email = models.EmailField(max_length=250, null=False, blank=False)
+    email = models.EmailField(max_length=250, null=False, blank=False, default=None)
     teacher = models.ForeignKey(
         to=Teacher,
         on_delete=models.CASCADE,

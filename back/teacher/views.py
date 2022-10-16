@@ -11,7 +11,7 @@ from rest_framework.status import (
 )
 
 from teacher.models import Aula, Teacher
-from teacher.serializers import AulaSerializer, TeacherSerializer
+from teacher.serializers import AulaSerializer, TeacherSerializer, CadastrarAulaSerializer
 
 
 class TeacherAPIView(APIView):
@@ -24,7 +24,7 @@ class TeacherAPIView(APIView):
 class CadastrarAulaAPIView(APIView):
     def post(self, request, id, format=None):
         teacher = get_object_or_404(Teacher, id=id)
-        serializer = CadastrarAulaAPIView(data=request.data)
+        serializer = CadastrarAulaSerializer(data=request.data)
         if serializer.is_valid():
             aula = Aula(
                 name=serializer.validated_data.get('name'),
@@ -34,6 +34,6 @@ class CadastrarAulaAPIView(APIView):
             aula_serializer = AulaSerializer(aula, many=False)
             return Response(aula_serializer.data, status=HTTP_201_CREATED)
         return Response(
-            {"message": "TEm erros", "errors": serializer.error},
+            {"message": "Tem erros", "errors": serializer.error},
             status=HTTP_400_BAD_REQUEST
         )

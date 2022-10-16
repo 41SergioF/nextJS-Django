@@ -12,8 +12,6 @@ export function useIndex() {
         })
     }, []);
 
-    console.log(listaTeacher)
-
     return {
         listaTeacher
     }
